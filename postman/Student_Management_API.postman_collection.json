@@ -1,0 +1,52 @@
+{
+  "info": {
+    "name": "Student Management API",
+    "_postman_id": "student-management-api-2026",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {"key":"base_url","value":"http://127.0.0.1:8000/api"},
+    {"key":"token","value":""}
+  ],
+  "item": [
+    {
+      "name":"Authentication",
+      "item":[
+        {"name":"Register","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{"name":"Admin User","email":"admin@example.com","password":"password123","password_confirmation":"password123"}"},"url":{"raw":"{{base_url}}/register"}}},
+        {"name":"Login","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{"email":"admin@example.com","password":"password123"}"},"url":{"raw":"{{base_url}}/login"}}},
+        {"name":"Me","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":{"raw":"{{base_url}}/me"}}},
+        {"name":"Logout","request":{"method":"POST","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":{"raw":"{{base_url}}/logout"}}}
+      ]
+    },
+    {
+      "name":"Students",
+      "item":[
+        {"name":"Get Students","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":{"raw":"{{base_url}}/students"}}},
+        {"name":"Create Student","request":{"method":"POST","header":[{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{"student_id":"2026-0001","first_name":"Juan","last_name":"Dela Cruz","email":"juan@example.com","phone":"09123456789","gender":"Male","birth_date":"2005-05-15","address":"Malaybalay City, Bukidnon","course":"BSIT","year_level":2}"},"url":{"raw":"{{base_url}}/students"}}},
+        {"name":"Get Student","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":{"raw":"{{base_url}}/students/1"}}},
+        {"name":"Update Student","request":{"method":"PUT","header":[{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{"student_id":"2026-0001","first_name":"Juan","last_name":"Updated","email":"juan.updated@example.com","phone":"09123456789","gender":"Male","birth_date":"2005-05-15","address":"Malaybalay City, Bukidnon","course":"BSIT","year_level":3}"},"url":{"raw":"{{base_url}}/students/1"}}},
+        {"name":"Delete Student","request":{"method":"DELETE","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":{"raw":"{{base_url}}/students/1"}}}
+      ]
+    },
+    {
+      "name":"Courses",
+      "item":[
+        {"name":"Get Courses","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":{"raw":"{{base_url}}/courses"}}},
+        {"name":"Create Course","request":{"method":"POST","header":[{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{"course_code":"BSBA","course_name":"Bachelor of Science in Business Administration","description":"Business program"}"},"url":{"raw":"{{base_url}}/courses"}}},
+        {"name":"Get Course","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":{"raw":"{{base_url}}/courses/1"}}},
+        {"name":"Update Course","request":{"method":"PUT","header":[{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{"course_code":"BSBA","course_name":"BS Business Administration","description":"Updated program"}"},"url":{"raw":"{{base_url}}/courses/1"}}},
+        {"name":"Delete Course","request":{"method":"DELETE","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":{"raw":"{{base_url}}/courses/1"}}}
+      ]
+    },
+    {
+      "name":"Enrollments",
+      "item":[
+        {"name":"Get Enrollments","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":{"raw":"{{base_url}}/enrollments"}}},
+        {"name":"Create Enrollment","request":{"method":"POST","header":[{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{"student_id":1,"course_id":1,"school_year":"2026-2027","semester":"1st","status":"Enrolled"}"},"url":{"raw":"{{base_url}}/enrollments"}}},
+        {"name":"Get Enrollment","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":{"raw":"{{base_url}}/enrollments/1"}}},
+        {"name":"Update Enrollment","request":{"method":"PUT","header":[{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{"student_id":1,"course_id":1,"school_year":"2026-2027","semester":"1st","status":"Completed"}"},"url":{"raw":"{{base_url}}/enrollments/1"}}},
+        {"name":"Delete Enrollment","request":{"method":"DELETE","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":{"raw":"{{base_url}}/enrollments/1"}}}
+      ]
+    }
+  ]
+}
